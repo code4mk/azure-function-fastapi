@@ -1,0 +1,40 @@
+name: Deploy Azure Function App
+
+on:
+  push:
+    branches:
+      - main  # Trigger deployment on push to the main branch
+  workflow_dispatch:  # Allow manual trigger from the Actions tab
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'  # Specify the Python version
+
+    - name: Create virtual environment
+      run: python3 -m venv .azure_function_fastapi_venv
+
+    - name: Activate virtual environment and install dependencies
+      run: |
+        source .azure_function_fastapi_venv/bin/activate
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Deploy to Azure Function App
+      uses: azure/functions-action@v1
+      with:
+        app-name: ${{ secrets.PROJECT_NAME }}  # Replace with your Function App name
+        package: '.'  # Specify the directory to deploy, usually the current directory
