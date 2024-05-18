@@ -17,16 +17,17 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.9'  # Specify the Python version
+        python-version: '3.10'  # Specify the Python version
 
     - name: Create virtual environment
       run: python3 -m venv .azure_function_fastapi_venv
 
     - name: Activate virtual environment and install dependencies
       run: |
-        source .azure_function_fastapi_venv/bin/activate
+        pushd './.'
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r requirements.txt --target=".python_packages/lib/site-packages"
+        popd
 
     - name: Azure Login
       uses: azure/login@v1
@@ -38,3 +39,5 @@ jobs:
       with:
         app-name: ${{ secrets.PROJECT_NAME }}  # Replace with your Function App name
         package: '.'  # Specify the directory to deploy, usually the current directory
+        scm-do-build-during-deployment: true
+        enable-oryx-build: true
