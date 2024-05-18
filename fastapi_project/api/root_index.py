@@ -8,7 +8,7 @@ router = APIRouter()
 @router.get("/")
 async def root_index(request: Request):
     data = {
-      'message': 'azure function project is running.'
+      'message': 'azure function project is running.now'
     }
     return JSONResponse(content=data, status_code=status.HTTP_200_OK)
     
