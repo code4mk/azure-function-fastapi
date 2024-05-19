@@ -19,7 +19,7 @@ def create_application():
     
     
     if load_sql_project == True:
-        print(load_sql_project)
+        print("SQL_PROJECT is enabled")
         # Include additional routers if LOAD_SQL_PROJECT is enabled
         from fastapi_project.api.v1 import user
         application.include_router(user.router)

@@ -21,3 +21,9 @@ pip3 install -r requirements.txt
 # run project with uvicorn
 uvicorn "fastapi_project.main:app" --reload --port=8000
 ```
+
+# sql project enable
+
+set the environment variable 
+* `DATABASE_URL`
+* `LOAD_SQL_PROJECT` value will be `yes`
