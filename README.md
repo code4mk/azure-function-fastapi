@@ -1,5 +1,7 @@
 # azure-function-fastapi
-deploy python fastapi on azure function
+Deploy Python FastAPI serverless application on Azure Functions.
+
+* Good project structure
 
 # local development (fastapi)
 
@@ -22,8 +24,14 @@ pip3 install -r requirements.txt
 uvicorn "fastapi_project.main:app" --reload --port=8000
 ```
 
-# sql project enable
+# deploy on production
 
-set the environment variable 
+## vscode extension
+<img width="986" alt="Screenshot 2024-05-19 at 5 50 24 PM" src="https://github.com/code4mk/azure-function-fastapi/assets/17185462/6ed26cba-70d8-4c76-8518-5c0b20eaf281">
+* [azure function extension](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)
+
+## sql project enable
+
+set the environment variable
 * `DATABASE_URL`
 * `LOAD_SQL_PROJECT` value will be `yes`
