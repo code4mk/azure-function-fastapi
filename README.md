@@ -36,7 +36,7 @@ uvicorn "fastapi_project.main:app" --reload --port=8000
 
 ## sql project enable
 
-set the environment variable
+set the environment variable azure (Settings >> Environment variables (app settings))
 * `DATABASE_URL`
 * `LOAD_SQL_PROJECT` value will be `yes`
 
