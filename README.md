@@ -22,6 +22,9 @@ pip3 install -r requirements.txt
 
 # run project with uvicorn
 uvicorn "fastapi_project.main:app" --reload --port=8000
+
+# or, run bash with shell
+./run_fastapi_project.sh
 ```
 
 # deploy on production
@@ -36,3 +39,10 @@ uvicorn "fastapi_project.main:app" --reload --port=8000
 set the environment variable
 * `DATABASE_URL`
 * `LOAD_SQL_PROJECT` value will be `yes`
+
+## Project route
+
+```bash
+http://localhost:8000/api/v1/users
+http://localhost:8000/health
+```
